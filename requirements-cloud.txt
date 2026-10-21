@@ -1,0 +1,4 @@
+# Optional; install only the provider SDKs you intend to use, or this whole file.
+google-genai>=1.55,<2
+openai
+anthropic
