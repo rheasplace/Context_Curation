@@ -40,7 +40,17 @@ class CorpusTools:
         return self._collection
 
     def metadata(self):
-        return self.collection().get(where=self.scope, include=["metadatas"])
+        ids, metadatas, offset, page_size = [], [], 0, 25000
+        while True:
+            batch = self.collection().get(where=self.scope, include=["metadatas"], limit=page_size, offset=offset)
+            if not batch["ids"]:
+                break
+            ids.extend(batch["ids"])
+            metadatas.extend(batch["metadatas"])
+            if len(batch["ids"]) < page_size:
+                break
+            offset += page_size
+        return {"ids": ids, "metadatas": metadatas}
 
     def get_corpus_status(self):
         try:
