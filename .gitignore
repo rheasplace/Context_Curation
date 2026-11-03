@@ -46,9 +46,10 @@ __pycache__/
 coverage.xml
 htmlcov/
 
-# Downloaded local model weights
+# Downloaded local model weights and oversized PDFs (>100 MB GitHub limit)
 *.gguf
 *.safetensors
+/context_sample/01_unreal-engine-5-7-documentation-1.pdf
 
 # Local work notes (the student-facing instructions remain versioned)
 /task_plan.md
